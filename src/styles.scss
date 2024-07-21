@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'GraphikRegular';
+    src: url(assets/PoliceGraphik/Graphik-Regular-Trial.otf);
+}
+
+@font-face {
+    font-family: 'GraphikBold';
+    src: url(assets/PoliceGraphik/Graphik-Bold-Trial.otf); 
+}
+
+p, li, a {
+    font-family: 'GraphikRegular';
+}
+
+h1, h2, h3, label {
+    font-family: 'GraphikBold';
+}
