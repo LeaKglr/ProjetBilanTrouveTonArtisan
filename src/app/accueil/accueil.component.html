@@ -45,7 +45,7 @@
         <div id="card" class="row row-cols-1 row-cols-md-3 g-4" aria-label="Artisans du mois">
             <div class="col" *ngFor="let artisan of topArtisans" >
                 <a [routerLink]="['/artisan', artisan.name]">
-                    <article class="card border-success mb-3"  style="max-width: 23rem;">
+                    <article class="card custom-border mb-3"  style="max-width: 23rem;">
                         <div class="card-header" >
                             <h3>{{ artisan.name }}</h3>
                         </div>
