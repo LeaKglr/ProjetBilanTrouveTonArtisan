@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: "ListeArtisans", component: ListeArtisansComponent},
   {path: 'category/:category', component: ListeArtisansComponent},
   {path: 'artisan/:name', component: FicheArtisanComponent},
+  {path: "**", component: PageErreurComponent}
 
 ];
 
