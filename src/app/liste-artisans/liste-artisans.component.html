@@ -1,1 +1,32 @@
-<p>liste-artisans works!</p>
+<header>
+    <app-header></app-header>
+</header>
+<main>
+    <section *ngIf="filteredArtisans && filteredArtisans.length">
+        <h2>Artisans dans la catégorie "{{ category }}"</h2>
+        <div id="card" class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="let artisan of filteredArtisans">
+                <a [routerLink]="['/artisan', artisan.name]">
+                    <article class="card custom-border mb-3"  style="max-width: 23rem;">
+                        <div class="card-header" >
+                        <h3>{{ artisan.name }}</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Sa spécialité : </strong>{{artisan.specialty}}</p>
+                            <p><strong>Sa localisation : </strong>{{artisan.location}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <ng-container *ngFor="let filled of getStars(artisan.note)">
+                                <span [class.filled]="filled" class="star">&#9733;</span>
+                            </ng-container>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <app-footer></app-footer>
+</footer>

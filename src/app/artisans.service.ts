@@ -30,4 +30,14 @@ export class ArtisansService {
       })
     )
   }
+
+  getAllArtisans(): Observable<Artisans[]> {
+    return this.http.get<Artisans[]>(this.dataUrl);
+  }
+
+  getArtisanByName(name: string): Observable<Artisans | undefined> {
+    return this.http.get<Artisans[]>(this.dataUrl).pipe(
+      map(artisans => artisans.find(artisan => artisan.name === name))
+    );
+  }
 }
