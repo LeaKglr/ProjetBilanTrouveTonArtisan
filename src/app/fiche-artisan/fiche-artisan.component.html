@@ -1,1 +1,62 @@
-<p>fiche-artisan works!</p>
+<header>
+    <app-header></app-header>
+</header>
+<main>
+    <div id="ficheartisan">
+        <div *ngIf="artisan" id="artisan">
+            <h2>{{ artisan.name }}</h2>
+            <div id="etoiles">
+                <ng-container *ngFor="let filled of getStars(artisan.note)">
+                <span [class.filled]="filled" class="star">&#9733;</span>
+            </ng-container>
+            </div>
+            <p id="specialite">Spécialité : {{ artisan.specialty }}</p>
+            <p id="localisation">Localisation : {{ artisan.location }}</p>
+            <p id="apropos">À propos : {{ artisan.about }}</p>
+            <a *ngIf="artisan.website" [href]="artisan.website" target="_blank">Visitez le site web</a>
+          </div>
+          <div *ngIf="!artisan">
+            <p>Chargement...</p>
+          </div>
+          <div id="contact">
+            <h2>Formulaire de contact</h2>
+            <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label" id="Name">Nom</label>
+                    <input type="nom" class="form-control" id="exampleInputName" placeholder="Nom" required ngModel name="name" #name="ngModel">
+                    <div *ngIf="(name.invalid && (name.touched || hasError))" class="text-danger">
+                        Le nom est requis.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputObject" class="form-label" id="Objet">Objet</label>
+                    <input type="objet" class="form-control" id="exampleInputObject" placeholder="Objet" required ngModel name="subject" #subject="ngModel">
+                    <div *ngIf="(subject.invalid && (subject.touched || hasError))" class="text-danger">
+                        L'objet est requis.
+                    </div>
+                </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlMessage" class="form-label" id="Message">Message</label>
+                    <textarea class="form-control" id="exampleFormControlMessage" rows="3" placeholder="Votre message" required ngModel name="message" #message="ngModel"></textarea>
+                    <div *ngIf="(message.invalid && (message.touched || hasError))" class="text-danger">
+                        Le message est requis.
+                    </div>
+                </div>
+                  <button type="submit" class="btn" style="background-color: #0074c7; color: #f1f8fc;" aria-label="Envoyer le formulaire">Envoyer</button>
+            </form>
+            
+          </div>
+          <div id="error-message" style="display: none;">
+            <p>Tous les champs doivent être remplis</p>
+          </div>
+          <div *ngIf="artisan">
+            <div *ngIf="isSubmitted" class="alert alert-success mt-3">
+                <p>Votre message a bien été envoyé à l'email de {{ artisan.email }}.</p>
+            </div>
+          </div>
+          
+    </div>
+</main>
+<footer>
+    <app-footer></app-footer>
+</footer>
