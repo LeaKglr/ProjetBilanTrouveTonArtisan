@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { ListeArtisansComponent } from './liste-artisans/liste-artisans.component';
 import { PageErreurComponent } from './page-erreur/page-erreur.component';
 import { PagesLegalesComponent } from './pages-legales/pages-legales.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PagesLegalesComponent } from './pages-legales/pages-legales.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
