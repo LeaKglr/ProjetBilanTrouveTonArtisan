@@ -1,0 +1,24 @@
+.search-container {
+    margin: 20px;
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #0074c7;
+      border-radius: 5px;
+    }
+    .card {
+      margin-bottom: 10px;
+    }
+    .star {
+      color: #ffd700;
+    }
+    .star.filled {
+      color: #ffd700;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000000;
+      }
+  }
