@@ -11,6 +11,7 @@ import { ListeArtisansComponent } from './liste-artisans/liste-artisans.componen
 import { PageErreurComponent } from './page-erreur/page-erreur.component';
 import { PagesLegalesComponent } from './pages-legales/pages-legales.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     ListeArtisansComponent,
     PageErreurComponent,
-    PagesLegalesComponent
+    PagesLegalesComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

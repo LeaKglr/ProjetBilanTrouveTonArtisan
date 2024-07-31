@@ -1,0 +1,24 @@
+<div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Rechercher..."
+      (input)="onSearch()"
+    />
+    <div *ngIf="artisans$ | async as artisans">
+      <div *ngIf="artisans.length; else noResults">
+        <div *ngFor="let artisan of artisans">
+          <div>
+            <a [routerLink]="['/artisan', artisan.name]">
+                <h5>{{ artisan.name }}</h5>
+                <p><strong>Sa spécialité : </strong>{{ artisan.specialty }}</p>
+                <p><strong>Sa localisation : </strong>{{ artisan.location }}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <ng-template #noResults>
+        <p>Aucun artisan trouvé.</p>
+      </ng-template>
+    </div>
+  </div>

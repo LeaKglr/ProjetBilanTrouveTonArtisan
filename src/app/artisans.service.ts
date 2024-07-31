@@ -40,4 +40,17 @@ export class ArtisansService {
       map(artisans => artisans.find(artisan => artisan.name === name))
     );
   }
+
+  searchArtisans(term: string): Observable<Artisans[]> {
+    return this.http.get<Artisans[]>(this.dataUrl).pipe(
+      map(artisans =>
+        artisans.filter(
+          artisan =>
+            artisan.name.toLowerCase().includes(term.toLowerCase()) ||
+            artisan.specialty.toLowerCase().includes(term.toLowerCase()) ||
+            artisan.location.toLowerCase().includes(term.toLowerCase())
+        )
+      )
+    );
+  }
 }
