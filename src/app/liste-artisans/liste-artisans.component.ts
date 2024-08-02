@@ -23,7 +23,6 @@ export class ListeArtisansComponent implements OnInit {
   ngOnInit() : void {
     this.routeSub = this.route.paramMap.subscribe(params => {
       this.category = params.get('category');
-      console.log('ngOnInit called');
       this.loadArtisans();
     });
   }

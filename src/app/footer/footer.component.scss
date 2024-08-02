@@ -1,8 +1,42 @@
+// Déclaration des variables pour les couleurs
+$text-color : #f1f8fc;
+$background-color: #0074c7;
+$border-color : white;
+
+// Mixin pour la position column
+@mixin positioncolumn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+
+// Mixin pour la navigation
+@mixin nav {
+    #teletmentionslegales nav {
+        border-top: solid 2px $border-color;
+        margin-top: 20px;
+    }
+}
+
+// Mixin pour la position row
+@mixin positionrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+// Mixin pour l'icon
+@mixin icon {
+    .icon {
+        margin-right: 10px;
+    }
+}
+
 #footer {
     width: 100%;
     height: auto;
-    background-color: #0074c7;
-    color: #f1f8fc;
+    background-color: $background-color;
+    color: $text-color;
     padding: 20px 0;
     
     h2 {
@@ -11,65 +45,52 @@
     }
 
     a {
-            color: #f1f8fc;
+            color: $text-color;
             text-decoration: none;
         }
     
     @media (min-width: 768px) {
         font-size: 1.6rem;
-        #contactetadresse {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-        }
 
-        .address {
-            display: flex;
-            margin-right: 50px;
+        #info {
+            @include positionrow;
 
-            .icon {
-                margin-right: 10px;
+            #contactetadresse {
+                @include positioncolumn;
             }
-        }
-        #teletmentionslegales {
-            margin-left: 50px;
 
-            .telephone {
+            .address {
                 display: flex;
+                margin-right: 50px;
 
-                .icon {
-                    margin-right: 10px;
+                @include icon;
+            }
+            #teletmentionslegales {
+
+                .telephone {
+                    display: flex;
+                    justify-content: center;
+                    margin-right: 80px;
+
+                    @include icon;
                 }
             }
-        }
 
-        #teletmentionslegales nav {
-            border-top: solid 2px white;
-            margin-top: 20px;
+            @include nav;
         }
+        
     }
 
     @media (max-width: 768px) {
         
         #contactetadresse,  #teletmentionslegales {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            
+            @include positioncolumn;
         }
+        @include nav;
 
-        #teletmentionslegales nav {
-            border-top: solid 2px white;
-            margin-top: 20px;
-        }
-        
         .address, .telephone {
             display: flex;
-            
-            .icon {
-                margin-right: 10px;
-            }
+            @include icon;
         }
     }
 }

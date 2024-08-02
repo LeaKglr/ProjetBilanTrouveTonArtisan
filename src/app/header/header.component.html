@@ -1,17 +1,20 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #f1f8fc;">
     <div class="container-fluid">
+
+        <!-- Section Logo du site et la navbar -->
         <div class="container-fluid" id="logo">
-            <a href="" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="assets/Images/Logo.png" alt="Logo de la région avec le texte : Trouve ton artisan! Avec la région Auvergne-Rhône-Alpes">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#searchForm" aria-controls="searchForm" aria-expanded="false" aria-label="Toggle search">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#searchForm" aria-controls="searchForm" aria-expanded="false" aria-label="Afficher/Cacher la recherche">
                 <img src="assets/Images/search-blue.svg" alt="Icones de recherche bleu" id="searchicon">
             </button>
-            <button id="btn" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="btn" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Afficher/Cacher la navigation">
                 <span class="navbar-toggler-icon" style="border-color: #0074c7;"></span>
             </button>
         </div>
 
+        <!-- Section Recherche et liens du menu de navigation -->
         <div id="searchetliens">
             <div class="collapse navbar-collapse" id="searchForm">
                 <form class="navbar-search m-auto mb-2 mb-lg-0" aria-label="Formulaire de recherche">
@@ -22,20 +25,13 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0" role="menubar">
-                    <li class="nav-item" role="none">
-                        <a class="nav-link" routerLink="/category/bâtiment" role="menuitem">Bâtiment</a>
-                    </li>
-                    <li class="nav-item" role="none">
-                        <a class="nav-link" routerLink="/category/services" role="menuitem">Services</a>
-                    </li>
-                    <li class="nav-item" role="none">
-                        <a class="nav-link" routerLink="/category/fabrication" role="menuitem">Fabrication</a>
-                    </li>
-                    <li class="nav-item" role="none">
-                        <a class="nav-link" routerLink="/category/alimentation" role="menuitem">Alimentation</a>
+                    <li class="nav-item" *ngFor="let lien of liens" role="none">
+                        <a class="nav-link" [routerLink]="['/category', lien.categorie.toLowerCase()]" role="menuitem" [attr.aria-label]="'Voir les artisans de la catégorie ' + lien.categorie">
+                            {{ lien.categorie }}
+                        </a>
                     </li>
                 </ul>
             </div>
-            </div>
+        </div>
     </div>
 </nav>

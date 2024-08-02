@@ -1,86 +1,103 @@
+// Déclaration des variables pour les couleurs
+$star-color : #ffca28;
+$star-empty-color : #d3d3d3;
+$primary-bg-line-color : #0074c7;
+$secondary-bg-line-color : #82b864;
+$background-color: #f1f8fc;
+$succes-color : #155724;
+$text-danger-color : red;
+
+// Mixin pour les titres avec une ligne colorée
+@mixin section-title($color) {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 3rem;
+        height: 0.6rem;
+        background-color: $color;
+    }
+}
+
+// Mixin pour les étoiles
+@mixin star {
+    #etoiles {
+        text-align: center;
+        margin-bottom: 10px;
+        .star {
+            font-size: 24px;
+            color: $star-empty-color;
+        }
+        
+        .star.filled {
+            color: $star-color;
+        }
+    }
+}
+
+// Mixin pour le formulaire de contact
+@mixin form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    .mb-3 {
+        width: 100%;
+
+        .form-label {
+            font-weight: bold;
+        }
+    }
+}
+
+// Mixin pour la ligne à côté de la localisation, la spécialité et la section à propos
+@mixin description {
+    #localisation, #specialite, #apropos {
+        position: relative;
+        margin-left: 3rem;
+    }
+    
+    #localisation::before, #specialite::before, #apropos::before {
+    position: absolute;
+    top: 0.7rem;
+    left: -2rem;
+    display: block;
+    width: 1rem;
+    height: .3rem;
+    content: "";
+    background: $primary-bg-line-color;
+}
+}
+
 @media (max-width: 768px) {
     #ficheartisan {
         #artisan, #contact {
             margin: 10px;
         }
 
-        #etoiles {
-            text-align: center;
-            .star {
-            font-size: 24px;
-            color: #d3d3d3;
-        }
-        
-        .star.filled {
-            color: #ffca28;
-        }
-        margin-bottom: 10px;
-        }
+        @include star;
 
         #artisan {
             h2 {
-                position: relative;
-                
+                @include section-title($primary-bg-line-color)
             }
         
-            h2::before {
-                content: "";
-                position: absolute;
-                top: -15px;
-                left: 0;
-                width: 3rem;
-                height: 0.6rem;
-                background-color: #0074c7;
-            }
-
-            #localisation, #specialite, #apropos {
-                position: relative;
-                margin-left: 3rem;
-            }
-            
-            #localisation::before, #specialite::before, #apropos::before {
-            position: absolute;
-            top: 0.7rem;
-            left: -2rem;
-            display: block;
-            width: 1rem;
-            height: .3rem;
-            content: "";
-            background: #0074c7;
-        }
+            @include description;
         }
 
         #contact {
             margin-top: 50px;
             h2 {
-            position: relative;
-            
-            }
-
-            h2::before {
-                content: "";
-                position: absolute;
-                top: -15px;
-                left: 0;
-                width: 3rem;
-                height: 0.6rem;
-                background-color: #82b864;
+                @include section-title($secondary-bg-line-color)
             }
 
             form {
-                width: 100%;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: end;
-
-                .mb-3 {
-                    width: 100%;
-
-                    .form-label {
-                        font-weight: bold;
-                    }
-                }
+                @include form;
             }
         }   
     }
@@ -99,83 +116,23 @@
             margin: 15px;
         }
 
-        #etoiles {
-            text-align: center;
-            .star {
-            font-size: 24px;
-            color: #d3d3d3;
-        }
-        
-        .star.filled {
-            color: #ffca28;
-        }
-        margin-bottom: 10px;
-        }
-        
+        @include star;
 
         #artisan {
             h2 {
-                position: relative;
-                
+                @include section-title($primary-bg-line-color)
             }
         
-            h2::before {
-                content: "";
-                position: absolute;
-                top: -15px;
-                left: 0;
-                width: 3rem;
-                height: 0.6rem;
-                background-color: #0074c7;
-            }
-
-            #localisation, #specialite, #apropos {
-                position: relative;
-                margin-left: 3rem;
-            }
-            
-            #localisation::before, #specialite::before, #apropos::before {
-            position: absolute;
-            top: 0.7rem;
-            left: -2rem;
-            display: block;
-            width: 1rem;
-            height: .3rem;
-            content: "";
-            background: #0074c7;
-        }
+            @include description;
         }
 
         #contact {
             h2 {
-            position: relative;
+                @include section-title($secondary-bg-line-color)
+            }
             
-            }
-
-            h2::before {
-                content: "";
-                position: absolute;
-                top: -15px;
-                left: 0;
-                width: 3rem;
-                height: 0.6rem;
-                background-color: #82b864;
-            }
-
             form {
-                width: 100%;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: end;
-
-                .mb-3 {
-                    width: 100%;
-
-                    .form-label {
-                        font-weight: bold;
-                    }
-                }
+                @include form;
             }
         }   
     }
@@ -188,13 +145,13 @@
     border-radius: 0.25rem;
   
     &.alert-success {
-      color: #155724;
-      background-color: #d4edda;
-      border-color: #c3e6cb;
+      color: $succes-color;
+      background-color: $background-color;
+      border-color: $background-color;
     }
   }
 
   .text-danger {
-    color: red;
-    font-size: 0.875rem; /* Taille de police pour les messages d'erreur */
+    color: $text-danger-color;
+    font-size: 0.875rem;
   }

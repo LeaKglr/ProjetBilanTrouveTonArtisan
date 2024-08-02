@@ -1,24 +1,30 @@
+// Déclaration des variables pour les couleurs
+$star-color : #ffca28;
+$star-empty-color : #d3d3d3;
+$border-color: #0074c7;
+$text-color : #00497c;
+
 .search-container {
     margin: 20px;
     input {
       width: 100%;
       padding: 10px;
       margin-bottom: 20px;
-      border: 1px solid #0074c7;
+      border: 1px solid $border-color;
       border-radius: 5px;
     }
     .card {
       margin-bottom: 10px;
     }
     .star {
-      color: #ffd700;
+      color: $star-empty-color;
     }
     .star.filled {
-      color: #ffd700;
+      color: $star-color;
     }
 
     a {
         text-decoration: none;
-        color: #000000;
+        color: $text-color;
       }
   }

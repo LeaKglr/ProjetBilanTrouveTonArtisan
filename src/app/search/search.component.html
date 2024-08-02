@@ -1,24 +1,29 @@
 <div class="search-container">
-    <input
-      type="text"
-      [(ngModel)]="searchTerm"
-      placeholder="Rechercher..."
-      (input)="onSearch()"
-    />
-    <div *ngIf="artisans$ | async as artisans">
-      <div *ngIf="artisans.length; else noResults">
-        <div *ngFor="let artisan of artisans">
-          <div>
-            <a [routerLink]="['/artisan', artisan.name]">
-                <h5>{{ artisan.name }}</h5>
-                <p><strong>Sa spécialité : </strong>{{ artisan.specialty }}</p>
-                <p><strong>Sa localisation : </strong>{{ artisan.location }}</p>
-            </a>
-          </div>
+  <!-- Section barre de recherche -->
+  <label for="search-input" class="sr-only">Rechercher un artisan</label>
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Rechercher..."
+    (input)="onSearch()"
+    aria-label="Rechercher un artisan"
+  />
+
+  <!-- Section qui permet d'afficher l'artisan en fonction de sa localisation, spécialité et son nom -->
+  <div *ngIf="artisans$ | async as artisans">
+    <div *ngIf="artisans.length; else noResults">
+      <div *ngFor="let artisan of artisans">
+        <div>
+          <a [routerLink]="['/artisan', artisan.name]" [attr.aria-label]="'Voir les détails de ' + artisan.name">
+            <h5>{{ artisan.name }}</h5>
+            <p><strong>Sa spécialité : </strong>{{ artisan.specialty }}</p>
+            <p><strong>Sa localisation : </strong>{{ artisan.location }}</p>
+          </a>
         </div>
       </div>
-      <ng-template #noResults>
-        <p>Aucun artisan trouvé.</p>
-      </ng-template>
     </div>
+    <ng-template #noResults>
+      <p>Aucun artisan trouvé.</p>
+    </ng-template>
   </div>
+</div>
