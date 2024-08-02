@@ -1,28 +1,40 @@
-.star {
-    font-size: 24px;
-    color: #d3d3d3;
-  }
-  
-  .star.filled {
-    color: #ffca28;
+// Déclaration des variables pour les couleurs
+$star-color : #ffca28;
+$star-empty-color : #d3d3d3;
+$border-color : #0074c7;
+
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+
+  .card-header, .card-body, .card-footer {
+    text-align: center;
   }
 
-  .col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
+  a {
+    text-decoration: none;
+        
+    .custom-border {
+      border: 2px solid $border-color;
 
-    .card-header, .card-body, .card-footer {
-        text-align: center;
+      .star {
+        font-size: 24px;
+        color: $star-empty-color;
+      }
+                    
+      .star.filled {
+        color: $star-color;
+      }
     }
+  }
 }
 
-a {
-  text-decoration: none;
-}
 
-.custom-border {
-    border: 2px solid #0074c7;
-}
+
+
+
+

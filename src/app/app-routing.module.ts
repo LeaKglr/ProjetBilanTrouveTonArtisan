@@ -8,10 +8,7 @@ import { PageErreurComponent } from './page-erreur/page-erreur.component';
 
 const routes: Routes = [
   {path: "", component: AccueilComponent},
-  {path: "mentionslegales", component: PagesLegalesComponent},
-  {path: "accessibilite", component: PagesLegalesComponent},
-  {path: "donneespersonnelles", component: PagesLegalesComponent},
-  {path: "cookies", component: PagesLegalesComponent},
+  {path: "pageslegales", component: PagesLegalesComponent},
   {path: "ListeArtisans", component: ListeArtisansComponent},
   {path: 'category/:category', component: ListeArtisansComponent},
   {path: 'artisan/:name', component: FicheArtisanComponent},

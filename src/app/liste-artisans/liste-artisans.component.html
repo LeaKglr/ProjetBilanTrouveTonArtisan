@@ -1,32 +1,38 @@
 <header>
     <app-header></app-header>
 </header>
-<main>
-    <section *ngIf="filteredArtisans && filteredArtisans.length">
-        <h2>Artisans dans la catégorie "{{ category }}"</h2>
+<main> 
+    
+    <!-- Section filtre de la liste des artisans en fonction de leur catégorie -->
+    <section *ngIf="filteredArtisans && filteredArtisans.length" aria-labelledby="category-title">
+        <header>
+            <h2 id="category-title">Artisans dans la catégorie "{{ category }}"</h2>
+        </header>
         <div id="card" class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" *ngFor="let artisan of filteredArtisans">
-                <a [routerLink]="['/artisan', artisan.name]">
+                <a [routerLink]="['/artisan', artisan.name]" [attr.aria-label]="'Voir les détails de ' + artisan.name">
                     <article class="card custom-border mb-3"  style="max-width: 23rem;">
-                        <div class="card-header" >
-                        <h3>{{ artisan.name }}</h3>
-                        </div>
+                        <header class="card-header" >
+                            <h3>{{ artisan.name }}</h3>
+                        </header>
                         <div class="card-body">
                             <p><strong>Sa spécialité : </strong>{{artisan.specialty}}</p>
                             <p><strong>Sa localisation : </strong>{{artisan.location}}</p>
                         </div>
-                        <div class="card-footer">
+                        <footer class="card-footer">
                             <ng-container *ngFor="let filled of getStars(artisan.note)">
-                                <span [class.filled]="filled" class="star">&#9733;</span>
+                                <span [class.filled]="filled" class="star" aria-hidden="true">&#9733;</span>
                             </ng-container>
-                        </div>
+                        </footer>
                     </article>
                 </a>
             </div>
         </div>
     </section>
+    <section *ngIf="!filteredArtisans || !filteredArtisans.length" aria-labelledby="no-artisans">
+        <h2 id="no-artisans">Aucun artisan trouvé dans la catégorie "{{ category }}"</h2>
+    </section>
 </main>
-
 <footer>
     <app-footer></app-footer>
 </footer>

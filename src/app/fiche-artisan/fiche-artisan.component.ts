@@ -15,7 +15,7 @@ export class FicheArtisanComponent implements OnInit {
   private routeSub: Subscription | null = null;
   isSubmitted = false;
   hasError = false;
-  
+  formtitle = "Formulaire de contact";
 
   constructor (
     private route: ActivatedRoute, 
@@ -36,9 +36,6 @@ export class FicheArtisanComponent implements OnInit {
   displayValidationErrors(form: NgForm) {
     Object.keys(form.controls).forEach(key => {
       const controlErrors = form.controls[key].errors;
-      if (controlErrors) {
-        console.log(`Key control: ${key}, errors:`, controlErrors);
-      }
     });
   }
 
