@@ -25,7 +25,7 @@
             </div>
             <div class="carousel-inner"> 
                 <article *ngFor="let etape of etapes; let i = index"  [ngClass]="{'carousel-item': true, 'active': i === 0}" data-bs-interval="10000">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption d-md-block">
                         <p id="number">{{etape.nombre}}</p>
                         <h3>{{etape.title}}</h3>
                         <p>{{etape.description}}</p>
@@ -60,9 +60,9 @@
                             <p><strong>Sa localisation : </strong>{{artisan.location}}</p>
                         </div>
                         <footer class="card-footer">
-                            <ng-container *ngFor="let filled of getStars(artisan.note)">
-                                <span [class.filled]="filled" class="star" aria-hidden="true">&#9733;</span>
-                            </ng-container>
+                            <ul class="rating" role="list" [attr.aria-label]="'Note de ' + artisan.note + ' sur 5 étoiles'">
+                                <li *ngFor="let filled of getStars(artisan.note)" class="star" [class.filled]="filled" aria-hidden="true">&#9733;</li>
+                            </ul>
                         </footer>
                     </div>
                 </a>
