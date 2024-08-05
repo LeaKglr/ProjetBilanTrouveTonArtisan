@@ -2,16 +2,28 @@
     <app-header></app-header>
 </header>
 <main>
+
+  <!-- Section breadcrumb -->
+  <section *ngIf="artisan" aria-labelledby="breadcrumb" id="sectionbreadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/category', category]">Liste des artisans ({{category}})</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{artisan.name}}</li>
+        </ol>
+    </nav>
+  </section>
+
   <!-- Section fiche artisan -->
-  <section id="ficheartisan">
-    <article *ngIf="artisan" id="artisan" aria-labelledby="artisan-title">
-      <header>
+  <section id="ficheartisan" aria-labelledby="artisan-card">
+    <article *ngIf="artisan" id="artisan" >
+      <header aria-labelledby="artisan-title">
         <h2 id="artisan-title">{{ artisan.name }}</h2>
       </header>  
       <div id="etoiles" aria-label="Évaluation">
-          <ng-container *ngFor="let filled of getStars(artisan.note)">
-            <span [class.filled]="filled" class="star" aria-hidden="true">&#9733;</span>
-          </ng-container>
+        <ul class="rating" role="list" [attr.aria-label]="'Note de ' + artisan.note + ' sur 5 étoiles'">
+          <li *ngFor="let filled of getStars(artisan.note)" class="star" [class.filled]="filled" aria-hidden="true">&#9733;</li>
+        </ul>
       </div>
       <p id="specialite">Spécialité : {{ artisan.specialty }}</p>
       <p id="localisation">Localisation : {{ artisan.location }}</p>

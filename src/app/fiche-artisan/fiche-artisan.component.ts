@@ -16,6 +16,8 @@ export class FicheArtisanComponent implements OnInit {
   isSubmitted = false;
   hasError = false;
   formtitle = "Formulaire de contact";
+  category: string | null = null;
+  filteredArtisans: Artisans[] = [];
 
   constructor (
     private route: ActivatedRoute, 
@@ -42,6 +44,7 @@ export class FicheArtisanComponent implements OnInit {
   ngOnInit(): void {
     this.routeSub = this.route.paramMap.subscribe(async params => {
       const name = params.get('name');
+      this.category = params.get('category');
       if (name) {
         this.artisan = await firstValueFrom(this.artisansService.getArtisanByName(name));
       }

@@ -31,14 +31,21 @@ $secondary-bg-line-color : #82b864;
     .card-header, .card-body, .card-footer {
         text-align: center;
 
-        .star {
+        .rating {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+          }
+          
+          .rating .star {
             font-size: 24px;
-            color: #d3d3d3;
-        }
-        
-        .star.filled {
-            color: #ffca28;
-        }
+            color: $star-empty-color;
+          }
+          
+          .rating .star.filled {
+            color: $star-color;
+          }
     }
 
     .custom-border {
@@ -55,11 +62,22 @@ $secondary-bg-line-color : #82b864;
         @include section-title($primary-bg-line-color)
     }
 
-    #carouselExampleDark, .carousel-inner, .carousel-item {
-        width: 100%;
-        height: 300px;
-        background-color: $background-color;
+    @media (min-width: 768px) {
+        #carouselExampleDark, .carousel-inner, .carousel-item {
+            width: 100%;
+            height: 300px;
+            background-color: $background-color;
+        }
     }
+
+    @media (max-width: 768px) {
+        #carouselExampleDark, .carousel-inner, .carousel-item {
+            width: 100%;
+            height: 425px;
+            background-color: $background-color;
+        }
+    }
+    
 
     #number {
         width: 25px;

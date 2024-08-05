@@ -25,16 +25,22 @@ $text-danger-color : red;
 // Mixin pour les étoiles
 @mixin star {
     #etoiles {
-        text-align: center;
         margin-bottom: 10px;
-        .star {
+        .rating {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+          }
+          
+          .rating .star {
             font-size: 24px;
             color: $star-empty-color;
-        }
-        
-        .star.filled {
+          }
+          
+          .rating .star.filled {
             color: $star-color;
-        }
+          }
     }
 }
 
@@ -136,6 +142,14 @@ $text-danger-color : red;
             }
         }   
     }
+}
+
+#sectionbreadcrumb {
+    a {
+        text-decoration: none;
+        color: $primary-bg-line-color;
+    }
+    
 }
 
 .alert {
