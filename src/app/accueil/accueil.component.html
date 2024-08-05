@@ -16,7 +16,7 @@
         <header id="titleline">
             <h2 id="utilisationsite-title">{{title}}</h2>
         </header>
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" aria-label="Utilisation du site">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -48,7 +48,7 @@
         <header>
             <h2 id="artisansdumois-title">{{artisansdumois}}</h2>
         </header>
-        <div id="card" class="row row-cols-1 row-cols-md-3 g-4" aria-label="Artisans du mois">
+        <div id="card" class="row row-cols-1 row-cols-md-3 g-4">
             <article class="col" *ngFor="let artisan of topArtisans">
                 <a [routerLink]="['/artisan', artisan.name]">
                     <div class="card custom-border mb-3"  style="max-width: 23rem;">
@@ -60,8 +60,8 @@
                             <p><strong>Sa localisation : </strong>{{artisan.location}}</p>
                         </div>
                         <footer class="card-footer">
-                            <ul class="rating" role="list" [attr.aria-label]="'Note de ' + artisan.note + ' sur 5 étoiles'">
-                                <li *ngFor="let filled of getStars(artisan.note)" class="star" [class.filled]="filled" aria-hidden="true">&#9733;</li>
+                            <ul class="rating">
+                                <li *ngFor="let filled of getStars(artisan.note)" class="star" aria-hidden="true">&#9733;</li>
                             </ul>
                         </footer>
                     </div>
