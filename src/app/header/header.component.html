@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0" role="menubar">
                     <li class="nav-item" *ngFor="let lien of liens" role="none">
-                        <a class="nav-link" [routerLink]="['/category', lien.categorie.toLowerCase()]" role="menuitem" [attr.aria-label]="'Voir les artisans de la catégorie ' + lien.categorie">
+                        <a class="nav-link" [routerLink]="['/category', lien.categorie.toLowerCase()]" role="menuitem">
                             {{ lien.categorie }}
                         </a>
                     </li>
