@@ -4,7 +4,7 @@
 <main>
 
   <!-- Section breadcrumb -->
-  <div *ngIf="artisan" aria-labelledby="breadcrumb" id="sectionbreadcrumb">
+  <div *ngIf="artisan" id="sectionbreadcrumb">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
@@ -15,20 +15,20 @@
   </div>
 
   <!-- Section fiche artisan -->
-  <section id="ficheartisan" aria-labelledby="artisan-card">
+  <div id="ficheartisan">
     <article *ngIf="artisan" id="artisan" >
       <header aria-labelledby="artisan-title">
         <h2 id="artisan-title">{{ artisan.name }}</h2>
       </header>  
       <div id="etoiles">
         <ul class="rating">
-          <li *ngFor="let filled of getStars(artisan.note)" class="star" aria-hidden="true">&#9733;</li>
+          <li *ngFor="let filled of getStars(artisan.note)" class="star" [ngClass]="{ 'filled': filled }" aria-hidden="true">&#9733;</li>
         </ul>
       </div>
       <p id="specialite">Spécialité : {{ artisan.specialty }}</p>
       <p id="localisation">Localisation : {{ artisan.location }}</p>
       <p id="apropos">À propos : {{ artisan.about }}</p>
-      <a *ngIf="artisan.website" [href]="artisan.website" target="_blank">Visitez le site web</a>
+      <a *ngIf="artisan.website" [routerLink]="artisan.website" target="_blank">Visitez le site web</a>
     </article>
     <div *ngIf="!artisan">
       <p>Chargement...</p>
@@ -39,17 +39,17 @@
       <header>
         <h2>{{formtitle}}</h2>
       </header>
-      <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" aria-labelledby="contact-form">
+      <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
         <div class="mb-3">
           <label for="exampleInputName" class="form-label" id="Name">Nom</label> 
-          <input type="nom" class="form-control" id="exampleInputName" placeholder="Nom" required ngModel name="name" #name="ngModel" aria-describedby="nameAttention">
+          <input type="text" class="form-control" id="exampleInputName" placeholder="Nom" required ngModel name="name" #name="ngModel" aria-describedby="nameAttention">
           <div *ngIf="(name.invalid && (name.touched || hasError))" class="text-danger" id="nameAttention">
             Le nom est requis.
           </div>
         </div>
         <div class="mb-3">
           <label for="exampleInputObject" class="form-label" id="Objet">Objet</label>
-          <input type="objet" class="form-control" id="exampleInputObject" placeholder="Objet" required ngModel name="subject" #subject="ngModel" aria-describedby="subjectAttention">
+          <input type="text" class="form-control" id="exampleInputObject" placeholder="Objet" required ngModel name="subject" #subject="ngModel" aria-describedby="subjectAttention">
           <div *ngIf="(subject.invalid && (subject.touched || hasError))" class="text-danger" id="subjectAttention">
             L'objet est requis.
           </div>
@@ -72,7 +72,7 @@
         </div>
       </div>
     </section>    
-  </section>
+  </div>
 </main>
 <footer>
     <app-footer></app-footer>

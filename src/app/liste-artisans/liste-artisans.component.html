@@ -4,23 +4,23 @@
 <main> 
 
     <!-- Section breadcrumb -->
-    <section aria-labelledby="breadcrumb" id="sectionbreadcrumb">
+    <div id="sectionbreadcrumb">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Liste des artisans ({{ category }})</li>
             </ol>
         </nav>
-    </section>
+    </div>
 
     <!-- Section filtre de la liste des artisans en fonction de leur catégorie -->
-    <section *ngIf="filteredArtisans && filteredArtisans.length" aria-labelledby="artisans-list-by-category">
+    <section *ngIf="filteredArtisans && filteredArtisans.length">
         <header aria-labelledby="category-title">
             <h2 id="category-title">Artisans dans la catégorie "{{ category }}"</h2>
         </header>
         <div id="card" class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" *ngFor="let artisan of filteredArtisans">
-                <a [routerLink]="['/category', category, 'artisan', artisan.name]" [attr.aria-label]="'Voir les détails de ' + artisan.name">
+                <a [routerLink]="['/category', category, 'artisan', artisan.name]">
                     <article class="card custom-border mb-3"  style="max-width: 23rem;">
                         <header class="card-header" >
                             <h3>{{ artisan.name }}</h3>
@@ -30,8 +30,8 @@
                             <p><strong>Sa localisation : </strong>{{artisan.location}}</p>
                         </div>
                         <footer class="card-footer">
-                            <ul class="rating" role="list" [attr.aria-label]="'Note de ' + artisan.note + ' sur 5 étoiles'">
-                                <li *ngFor="let filled of getStars(artisan.note)" class="star" [class.filled]="filled" aria-hidden="true">&#9733;</li>
+                            <ul class="rating">
+                                <li *ngFor="let filled of getStars(artisan.note)" class="star" [ngClass]="{ 'filled': filled }" aria-hidden="true">&#9733;</li>
                             </ul>
                         </footer>
                     </article>

@@ -50,7 +50,7 @@
         </header>
         <div id="card" class="row row-cols-1 row-cols-md-3 g-4">
             <article class="col" *ngFor="let artisan of topArtisans">
-                <a [routerLink]="['/artisan', artisan.name]">
+                <a [routerLink]="['/category', artisan.category, 'artisan', artisan.name]">
                     <div class="card custom-border mb-3"  style="max-width: 23rem;">
                         <header class="card-header" >
                             <h3>{{ artisan.name }}</h3>
@@ -61,7 +61,7 @@
                         </div>
                         <footer class="card-footer">
                             <ul class="rating">
-                                <li *ngFor="let filled of getStars(artisan.note)" class="star" aria-hidden="true">&#9733;</li>
+                                <li *ngFor="let filled of getStars(artisan.note)" class="star" [ngClass]="{ 'filled': filled }" aria-hidden="true">&#9733;</li>
                             </ul>
                         </footer>
                     </div>
