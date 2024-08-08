@@ -14,7 +14,7 @@
     <div *ngIf="artisans.length; else noResults">
       <div *ngFor="let artisan of artisans">
         <div>
-          <a [routerLink]="['/artisan', artisan.name]" [attr.aria-label]="'Voir les détails de ' + artisan.name">
+          <a [routerLink]="['/artisan', artisan.name]">
             <h5>{{ artisan.name }}</h5>
             <p><strong>Sa spécialité : </strong>{{ artisan.specialty }}</p>
             <p><strong>Sa localisation : </strong>{{ artisan.location }}</p>

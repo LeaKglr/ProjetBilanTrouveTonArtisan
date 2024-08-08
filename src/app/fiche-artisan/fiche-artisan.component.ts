@@ -31,14 +31,7 @@ export class FicheArtisanComponent implements OnInit {
       form.resetForm();
     } else {
       this.hasError = true;
-      this.displayValidationErrors(form);
     }
-  }
-
-  displayValidationErrors(form: NgForm) {
-    Object.keys(form.controls).forEach(key => {
-      const controlErrors = form.controls[key].errors;
-    });
   }
 
   ngOnInit(): void {
